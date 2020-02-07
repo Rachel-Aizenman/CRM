@@ -1,0 +1,31 @@
+.nav-bar-link{
+    text-decoration: none;
+    color: white;
+    padding: 40px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  }
+  
+  
+  .nav-bar-link:hover{
+  text-decoration: none;
+  background-color: #3D3333;
+   }
+
+
+  
+  .divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+  }
+  
+  .toolbar{
+    background-color: black;
+    /* width: 100vw; */
+   /* justify-content: center; */
+  }
+  
+  /* .button:hover{
+    background-color: aliceblue;
+  } */

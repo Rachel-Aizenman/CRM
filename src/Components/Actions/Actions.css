@@ -1,0 +1,49 @@
+body{
+    background-color: white;
+}
+
+.line{
+    width:96vw;
+    margin-left: 2vw;
+    height: 2px;
+    background-color:rgba(169, 169, 169, 0.306);
+    border-radius: 1px;
+}
+.component{
+    height: 40vh;
+    padding-left: 30px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.title{
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 540;
+    line-height: 5;
+    letter-spacing: 0.03857em;
+    
+}
+
+.actions{
+    margin-left: 4vw;
+    display: block;
+    
+}
+
+.options{
+ margin-bottom: 1px;
+}
+
+.client{
+  margin-left: -2vw;
+}
+
+.input{
+    margin-left: -190px;
+}
+
+.button{
+    background-color: red;
+    margin: 900px;
+}
+
