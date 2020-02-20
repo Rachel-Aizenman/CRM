@@ -15,8 +15,8 @@ class NewClient extends Component {
                     }} />
                 </div>
                 <div className='badge-info'>
-                    <div className='number'>14</div>
-                    New {this.props.month} Clients
+                    <div className='number'> {this.props.number}</div>
+                   New {this.props.month} Clients
                 </div>
 
 

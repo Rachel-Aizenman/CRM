@@ -1,0 +1,36 @@
+.input{
+    background-color: rgba(0, 0, 0, 0.864);
+    color: white;
+    border-radius: 2%;
+    width: 200px;
+    height: 200px;
+    overflow: auto;
+    position: absolute;
+    z-index: 1;
+    margin-right: 600px;
+    margin-top: 30px;
+}
+
+.name{
+   padding: 3px;
+}
+
+.name:hover{
+    background-color: rgba(0, 0, 0, 0.619);
+ }
+
+ .name:active{
+    background-color: rgba(240, 233, 233, 0.673);
+ }
+
+ .owner{
+    width: 150px;
+    height: 120px;
+    margin-right: 575px;
+ }
+
+ .email{
+    height: 100px;
+    width: 50px;
+    margin-right: 675px;
+ }

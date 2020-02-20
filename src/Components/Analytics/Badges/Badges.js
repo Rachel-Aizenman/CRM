@@ -15,15 +15,19 @@ class Badges extends Component {
 
 
     render() {
-        const month = this.props.ClientStore.getCurrentMonth()
-        const newClientInfo = this.props.ClientStore.getNewClientsinfo()
-        console.log(this.props.ClientStore.getNewClientsinfo())
+        const clientStore = this.props.ClientStore
+        const month = clientStore.getCurrentMonth()
+        const emailsSent = clientStore.clients.filter(c => c.emailType !== null).length
+        const outstandingClients = clientStore.clients.filter(c => c.sold === true).length
+        const hottestCountry = clientStore.getHottestCountry()      
+        // const countNewClients = this.props.ClientStore.getNewClientsinfo()
+        // console.log(this.props.ClientStore.getNewClientsinfo())
         return (
             <div className='sub-component'>
-                <NewClient month={month}/>
-                <Emails/>
-                <OutstandingClient/>
-                <Country/>
+                <NewClient number={this.props.ClientStore.calculateNewClients()} month={month}/>
+                <Emails emailsSent={emailsSent}/>
+                <OutstandingClient outstandingClients={outstandingClients}/>
+                <Country country = { hottestCountry ?hottestCountry.split('').splice(4).join('') : 'No Country'}/>
                 
             </div>
         )

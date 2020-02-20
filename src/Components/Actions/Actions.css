@@ -31,7 +31,8 @@ body{
 }
 
 .options{
- margin-bottom: 1px;
+ margin-bottom: 4px;
+ display: flex;
 }
 
 .client{
@@ -47,3 +48,15 @@ body{
     margin: 900px;
 }
 
+.space{
+    display: inline-flex;
+    width: 15px;
+}
+
+.drop-down{
+    width: 100px;
+}
+
+.input-line{
+    width: 100px;
+}

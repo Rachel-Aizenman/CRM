@@ -15,7 +15,7 @@ class Emails extends Component {
 
             </div>
             <div className='badge-info'>
-                    <div className='number'>454</div>
+                <div className='number'>{this.props.emailsSent}</div>
                     Emails Sent
                 </div>
             </div>

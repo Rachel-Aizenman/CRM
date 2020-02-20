@@ -7,6 +7,7 @@ import '../Analytics.css'
 class Country extends Component {
 
     render() {
+        console.log(this.props.country)
         return (
             <div className='badge-component'>
                 <div className='badge country'>
@@ -15,7 +16,7 @@ class Country extends Component {
                     }} />
                 </div>
                 <div className='badge-info'>
-                    <div className='number'>France</div>
+                <div className='number'>{this.props.country}</div>
                     Hottest Country                </div>
             </div>
         )

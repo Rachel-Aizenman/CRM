@@ -13,7 +13,7 @@ class OutstandingClient extends Component {
  }} />
             </div>
             <div className='badge-info'>
-                    <div className='number'>298</div>
+<div className='number'>{this.props.outstandingClients}</div>
                     Outstanding Clients
                 </div>
             </div>
