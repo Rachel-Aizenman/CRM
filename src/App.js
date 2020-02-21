@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   render() {
-
+    this.componentDidMount()
     return (
       <div>
         <NavBar/>

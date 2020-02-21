@@ -52,7 +52,7 @@ export default function ButtonAppBar() {
       </AppBar>
 
       <div>
-<Route exact path='/clients' render={() => (<Clients/>)} />
+<Route path='/clients' render={() => (<Clients/>)} />
 <Route exact path='/actions' render={() => (<Actions/>)} /> 
 <Route exact path='/analytics'render={() => (<Analytics/>)} />
 </div>   

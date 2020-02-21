@@ -7,7 +7,6 @@ import '../Analytics.css'
 class Country extends Component {
 
     render() {
-        console.log(this.props.country)
         return (
             <div className='badge-component'>
                 <div className='badge country'>

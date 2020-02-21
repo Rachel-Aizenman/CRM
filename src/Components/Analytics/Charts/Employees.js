@@ -5,10 +5,10 @@ import { BarChart, Bar, XAxis, YAxis  } from 'recharts';
 class Employees extends Component {
 
     render() {
-        const data = [{ name: 'Page A', uv: 400, pv: 2400, amt: 2400 }, { name: 'Page A', uv: 400, pv: 800, amt: 2400 }, { name: 'Page A', uv: 500, pv: 2400, amt: 2400 },  {name: 'Page A', uv: 900, pv: 240, amt: 2400 },  {name: 'Page A', uv: 500, pv: 2400, amt: 2400 }]
+        const data = this.props.data
         return (
             <div className='graph employees'>
-                Employees
+                <h4>Top Employees</h4>
                 <BarChart width={400} height={200} data={data}>
                     <XAxis dataKey="name" tick={'renderCustomAxisTick'} />
                     <YAxis />

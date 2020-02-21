@@ -5,17 +5,19 @@ import SalesCountry from './SalesCountry'
 import SalesSince from './SalesSince'
 import { inject } from 'mobx-react';
 
+@inject('ClientStore')
 class Charts extends Component {
 
     render() {
+        const clientStore = this.props.ClientStore
         return (
             <div className='sub-component'>
                 <div>
-                    <Employees data/>
-                    <SalesSince />
+                    <Employees data={clientStore.getTopEmployee()} />
+                    <SalesSince date={clientStore.getThreeMonthsAgo()} data={clientStore.getSalesBy()}/>
                 </div>
                 <div>
-                    <SalesCountry />
+                    <SalesCountry data={clientStore.getSalesByCountry()} />
                     <Clients />
                 </div>
             </div>

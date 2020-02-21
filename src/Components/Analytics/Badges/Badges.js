@@ -18,7 +18,7 @@ class Badges extends Component {
         const clientStore = this.props.ClientStore
         const month = clientStore.getCurrentMonth()
         const emailsSent = clientStore.clients.filter(c => c.emailType !== null).length
-        const outstandingClients = clientStore.clients.filter(c => c.sold === true).length
+        const outstandingClients = clientStore.clients.filter(c => c.sold === false).length
         const hottestCountry = clientStore.getHottestCountry()      
         // const countNewClients = this.props.ClientStore.getNewClientsinfo()
         // console.log(this.props.ClientStore.getNewClientsinfo())
