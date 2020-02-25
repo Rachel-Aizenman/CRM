@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 
 
 export default class SalesSince extends PureComponent {
-    static jsfiddleUrl = 'https://jsfiddle.net/alidingling/xqjtetw0/';
+    static jsfiddleUrl = 'https://jsfiddle.net/alidingling/xqjtetw';
 
 
     render() {

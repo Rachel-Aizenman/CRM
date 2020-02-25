@@ -50,7 +50,7 @@ class UpdateClient extends Component {
               <div className='category'> 
               
               Name: 
-               <Input name='name' defaultValue={this.props.name}  className='input' 
+               <Input name='name' defaultValue={this.props.name}  className='input-update' 
                 style={{
                     color: "white",
                 }} onChange={this.handleChange}/>
@@ -59,7 +59,7 @@ class UpdateClient extends Component {
                <div className='category'> 
                Surname: 
                
-               <Input name='surname' defaultValue={this.props.surname} className='input' inputProps={{ 'aria-label': 'description' }}
+               <Input name='surname' defaultValue={this.props.surname} className='input-update' inputProps={{ 'aria-label': 'description' }}
                 style={{
                     color: "white",
                 }} onChange={this.handleChange}/>
@@ -69,7 +69,7 @@ class UpdateClient extends Component {
                <div className='category'> 
                Country: 
 
-               <Input name='country' defaultValue={this.props.country}  className='input' inputProps={{ 'aria-label': 'description' }}
+               <Input name='country' defaultValue={this.props.country}  className='input-update' inputProps={{ 'aria-label': 'description' }}
                 style={{
                     color: "white",
                 }} onChange={this.handleChange}/>

@@ -6,6 +6,12 @@ const moment = require('moment')
 export class ClientStore {
     @observable clients = [];
 
+    @action getClients = async () => {
+        let response = await axios.get('http://localhost:4000/clients')
+        // response.data[0] ? this.clients = [...response.data[0]] : console.log('error')
+        return response[0]
+    }
+
     @action getClients = () => {
         data.forEach(d => this.clients.push(d))
     }
@@ -80,47 +86,117 @@ export class ClientStore {
 
     @action getSalesBy = () => {
         const monthNames = ["November", "December", "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October"];
+            "July", "August", "September", "October"];
 
-       let startDate =  this.getThreeMonthsAgo()
-       let date = startDate[1]
-       let month = startDate[0]
-       let monthIndex = monthNames.findIndex(m => month === m)
+        let startDate = this.getThreeMonthsAgo()
+        let date = startDate[1]
+        let month = startDate[0]
+        let monthIndex = monthNames.findIndex(m => month === m)
 
-       const dateArray = []
-       for(let i = 0; i < 12; i++){
-        if(date >= 29){
-            date = 1
-            monthIndex++
-        } else {
-            date = date + 5
+        const dateArray = []
+        for (let i = 0; i < 12; i++) {
+            if (date >= 29) {
+                date = 1
+                monthIndex++
+            } else {
+                date = date + 5
+            }
+            let newMonth = monthNames[monthIndex]
+
+            dateArray.push(newMonth.slice(0, 3) + '-' + date)
+
         }
-        let newMonth = monthNames[monthIndex]
+        let totals = []
+        const objs = []
+        for (let i = 0; i < dateArray.length; i++) {
+            if(dateArray[i].split('-')[1].split('').length == 1){
+                dateArray.map(d => 0 + d.split('-')[1])
+                objs.push({ 'name': dateArray[i].split('').splice(0, 4).join('') + 0 + dateArray[i].split('').splice(4).join('') , 'uv': null })
+            } else {
+            objs.push({ 'name': dateArray[i].split(0, 3)[0], 'uv': null })}
+        }
+
+
+        const abvMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        const indxMonths = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+
+        let formattedDate = []
+        for(let i = 0; i < objs.length; i++){
+            let indx = abvMonths.findIndex(a => a === objs[i].name.split('').splice(0, 3).join(''))
+            formattedDate = objs.map(o => indxMonths[indx]+ o.name.split('').splice(3).join(''))
+        }
+
         
-        dateArray.push(newMonth.slice(0, 3) + '-' +  date)
+        for(let i = 0; i < formattedDate.length; i++){
+        const formatted = this.clients.filter(c => c.firstContact.split('').splice(5, 5).join('') == formattedDate[i])
+        const salesBy = formatted.filter(c => c.sold === true)
+        const total = salesBy.length * 4
+            totals.push(total)
+        }
 
-       }
-       
-       const dates = []
-       for (let i = 0; i < dateArray.length; i++) {
-        dates.push({ 'name': dateArray[i].split(0, 3)[0], 'uv': 32})
+        for (let i = 0; i < dateArray.length; i++) {
+            if(dateArray[i].split('-')[1].split('').length == 1){
+                dateArray.map(d => 0 + d.split('-')[1])
+                objs.push({ 'name': dateArray[i].split('').splice(0, 4).join('') + 0 + dateArray[i].split('').splice(4).join('') , 'uv': totals[i] })
+            } else {
+            objs.push({ 'name': dateArray[i].split(0, 3)[0], 'uv': totals[i] })}
+        }
+
+
+        const formatted = this.clients.filter(c => c.firstContact.split('').splice(5, 5).join('') == formattedDate)
+        const salesBy = formatted.filter(c => c.sold === true)
+        const total = salesBy.length
+
+     const data = objs.splice(12, 12)
+        console.log(objs.splice(12, 12))
+        return data
+
+
+
     }
-    console.log(dateArray)
-    const abvMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"]
-    const indxMonths = [ 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12]
-    const formattedDate = dateArray.map(d => d.split('-')[0]).findIndex(d => d === abvMonths)
-   
-    console.log(formattedDate)
-    const bro = this.clients.map((c) => c.firstContact.split('').splice(5, 5).join(''))
 
-    console.log(bro)
-
-
-
-    return dates
+    @action getClientAcquisition = () => {
+        const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+        const d = new Date()
+        let lastMonth = months[d.getMonth() - 1]
+        const lastMonthDate = '2018-' + lastMonth
+        const lastMonthsClients = this.clients.filter(c => c.firstContact.split('').splice(0, 7).join('') == lastMonthDate)
+        const lastMonthSales = lastMonthsClients.filter(c => c.sold === true)
+        const lastMonthValue = lastMonthSales.length
 
 
+        let n = 6;
+        let last6monthsTotal = 0
+        while (n > 0) {
+            const last6Months = months[d.getMonth() + n]
+            const last6Date = '2018-' + last6Months
+            const last6Clients = this.clients.filter(c => c.firstContact.split('').splice(0, 7).join('') == last6Date)
+            const last6Sales = last6Clients.filter(c => c.sold === true)
+            const last6Value = last6Sales.length
+            last6monthsTotal += last6Value
+            n--;
+          }
 
+          let k = 12;
+          let last12monthsTotal = 0
+          while (k > 0) {
+              const last12Months = months[d.getMonth() + k]
+              const last12Date = '2017-' + last12Months
+              const last12Clients = this.clients.filter(c => c.firstContact.split('').splice(0, 7).join('') == last12Date)
+              const last12Sales = last12Clients.filter(c => c.sold === true)
+              const last12Value = last12Sales.length
+              last12monthsTotal += last12Value
+
+              k--;
+
+            }
+
+
+
+
+        const data = [{ 'name': 'Last Month', 'value': lastMonthValue }, { 'name': '6-12 Months', 'value': last6monthsTotal }, { 'name': '12 Months', 'value': last12monthsTotal }]
+
+        return data
     }
 
     @action getDate = () => {

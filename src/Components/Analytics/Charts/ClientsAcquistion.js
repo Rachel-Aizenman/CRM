@@ -3,12 +3,6 @@ import {
   PieChart, Pie, Sector, Cell,
 } from 'recharts';
 
-const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
@@ -31,11 +25,12 @@ export default class Clients extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
 
   render() {
+      const data = this.props.data
     return (
+      
         <div className='graph client-acquistion'>
       <PieChart width={400} height={400}>
-      Client Acquisition
-
+      <h4>Sales By Country</h4>
         <Pie
           data={data}
           cx={200}
