@@ -1,6 +1,7 @@
-import { observable, action, computed } from 'mobx'
-let data = require('../data.json')
-const moment = require('moment')
+import { observable, action, computed } from 'mobx';
+import axios from 'axios';
+let data = require('../data.json');
+const moment = require('moment');
 
 
 export class ClientStore {

@@ -8,6 +8,7 @@
     "@material-ui/core": "^4.9.2",
     "@material-ui/lab": "^4.0.0-alpha.42",
     "@svgr/webpack": "4.1.0",
+    "axios": "^0.21.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
